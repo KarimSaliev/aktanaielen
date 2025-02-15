@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&family=Spectral+SC:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="slide active" style="background-image: url('static/IMG_2586.jpeg');">
+            <div class="image-text">Aktan & Aielen</div>
+            <div class="save-the-date">Save the Date: 24.06.2024</div>
+        </div>
+        <div class="slide" style="background-image: url('static/unnamed-4.jpg');">
+            <div class="image-text" style="color: black">Aktan & Aielen</div>
+            <div class="save-the-date">Save the Date: 24.06.2024</div>
+        </div>
+        <div class="slide" style="background-image: url('static/unnamed-2.jpg');">
+            <div class="image-text" style="color: black">Aktan & Aielen</div>
+            <div class="save-the-date">Save the Date: 24.06.2024</div>
+        </div>
+        <div class="slide" style="background-image: url('static/unnamed.jpg');">
+            <div class="image-text" style="color: black">Aktan & Aielen</div>
+            <div class="save-the-date">Save the Date: 24.06.2024</div>
+        </div>
+    </div>
+    
+    <div class="section text-section">
+        <h2>Invitation</h2>
+        <p>С огромной радостью мы, Актан и Айелен, приглашаем вас разделить с нами самый важный и волшебный день в нашей жизни! Этот день будет наполнен любовью, счастьем и теплыми моментами, и нам очень хочется, чтобы вы были рядом.
+
+            Ждем вас, чтобы вместе создать незабываемые воспоминания!
+            <br>
+            С любовью,
+            Актан & Айелен</p>
+    </div>
+    <div class="image-section-small"></div>
+    
+    <div class="section location-section">
+        <h2>Location</h2>
+        <p>Приглашаем вас присоединиться к нам в Royal Restaurant, по адресу ул. Мадиева 18/1. Будем рады видеть вас! </p>
+        <a href="https://2gis.kg/bishkek/firm/70000001039587169" target="_blank" class="location-button">открыть в 2Gis</a>
+    </div>
+    
+    <div class="section timing-section">
+        <h2>Schedule</h2>
+        <p><strong>15:00</strong> - Встреча гостей</p>
+        <p><strong>16:30</strong> - Церемония</p>
+        <p><strong>17:00</strong> - Фотосессия</p>
+        <p><strong>17:30</strong> - Ужин</p>
+        <p><strong>21:30</strong> - Разрезание торта</p>
+        <p><strong>22:00</strong> - Афтепати</p>
+    </div>
+    
+    
+    <div class="section dresscode-section">
+        <h2>Dress Code</h2>
+        <p>Пожалуйста, выберите наряды в оттенках кремового, бежевого и золотого, чтобы соответствовать тематике нашей свадьбы.</p>
+</div>
+    </div>
+    
+    
+    <div class="section text-section">
+        <h2>Details</h2>
+        <p>Ваше присутствие — лучший подарок для нас, но мы будем рады любому знаку внимания.</p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let slideIndex = 0;
+            const slides = document.querySelectorAll(".slide");
+            
+            function showSlides() {
+                slides.forEach((slide, index) => {
+                    slide.style.opacity = "0";
+                    slide.style.zIndex = "0";
+                });
+                slides[slideIndex].style.opacity = "1";
+                slides[slideIndex].style.zIndex = "1";
+                slideIndex = (slideIndex + 1) % slides.length;
+                setTimeout(showSlides, 5000);
+            }
+            
+            showSlides();
+        });
+    </script>
+</body>
+</html>
