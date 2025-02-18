@@ -11,22 +11,29 @@
     
 </head>
 <body>
+    <div class="main-container">
+        <div class="image-text">
+            Aktan & Aielen
+            <div class="save-the-date">
+                12.12.2025
+            </div>
+        </div>
+    </div>
     <div class="slideshow-container">
         <div class="slide active" style="background-image: url('https://github.com/KarimSaliev/aktanaielen/blob/main/static/IMG_2586.jpeg?raw=true');">
-            <div class="image-text">Aktan & Aielen</div>
-            <div class="save-the-date">Save the Date: 24.06.2024</div>
+            
         </div>
         <div class="slide" style="background-image: url('https://github.com/KarimSaliev/aktanaielen/blob/main/static/unnamed-4.jpg?raw=true');">
-            <div class="image-text" style="color: black">Aktan & Aielen</div>
-            <div class="save-the-date">Save the Date: 24.06.2024</div>
+        
+            
         </div>
         <div class="slide" style="background-image: url('https://github.com/KarimSaliev/aktanaielen/blob/main/static/IMG_2586.jpeg?raw=true');">
-            <div class="image-text" style="color: black">Aktan & Aielen</div>
-            <div class="save-the-date">Save the Date: 24.06.2024</div>
+           
+            
         </div>
         <div class="slide" style="background-image: url('https://github.com/KarimSaliev/aktanaielen/blob/main/static/unnamed.jpg?raw=true');">
-            <div class="image-text" style="color: black">Aktan & Aielen</div>
-            <div class="save-the-date">Save the Date: 24.06.2024</div>
+            
+   
         </div>
     </div>
     
@@ -58,13 +65,6 @@
     </div>
     
     
-    <div class="section dresscode-section">
-        <h2>Dress Code</h2>
-        <p>Пожалуйста, выберите наряды в оттенках кремового, бежевого и золотого, чтобы соответствовать тематике нашей свадьбы.</p>
-</div>
-    </div>
-    
-    
     <div class="section text-section">
         <h2>Details</h2>
         <p>Ваше присутствие — лучший подарок для нас, но мы будем рады любому знаку внимания.</p>
@@ -87,6 +87,22 @@
             
             showSlides();
         });
+        document.addEventListener("DOMContentLoaded", function() {
+    const sections = document.querySelectorAll(".section");
+
+    function revealSections() {
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            if (sectionTop < windowHeight * 0.85) {
+                section.classList.add("visible");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", revealSections);
+    revealSections(); // Run on page load in case some sections are already visible
+});
     </script>
 </body>
 </html>

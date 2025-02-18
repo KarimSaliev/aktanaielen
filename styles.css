@@ -2,7 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     color: #333;
     margin: 0;
-    padding: 10px;
+    padding: 20px;
     overflow-x: hidden;
 }
 .section {
@@ -12,6 +12,23 @@ body {
     height: 80vh;
     text-align: center;
     position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 2s ease-out, transform 2s ease-out;
+}
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+html {
+    scroll-behavior: smooth;
+}
+
+.main-container {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
 }
 .slideshow-container {
     position: relative;
@@ -33,6 +50,29 @@ body {
 .active {
     opacity: 1;
 }
+@keyframes blinkShadow {
+    0% {
+        text-shadow: 
+        0px 0px 20px rgba(128, 128, 128, 0.8),
+        0px 0px 40px rgba(128, 128, 128, 0.6), 
+        0px 0px 60px rgba(128, 128, 128, 0.4),
+        9px 9px 5px rgba(125, 119, 119, 0.3);
+    }
+    50% {
+        text-shadow: 
+        0px 0px 10px rgba(128, 128, 128, 0.5),
+        0px 0px 30px rgba(128, 128, 128, 0.3), 
+        0px 0px 50px rgba(128, 128, 128, 0.2),
+        5px 5px 3px rgba(105, 103, 103, 0.2);
+    }
+    100% {
+        text-shadow: 
+        0px 0px 20px rgba(128, 128, 128, 0.8),
+        0px 0px 40px rgba(128, 128, 128, 0.6), 
+        0px 0px 60px rgba(128, 128, 128, 0.4),
+        9px 9px 5px rgba(99, 97, 97, 0.3);
+    }
+}
 .image-text {
     position: absolute;
     top: 50%;
@@ -44,44 +84,28 @@ body {
     text-align: center;
     font-family: "Beau Rivage", serif;
     color: black;
-    text-shadow: 
-    0px 0px 20px rgba(255, 255, 255, 0.8),
-    0px 0px 40px rgba(255, 255, 255, 0.6), 
-    0px 0px 60px rgba(255, 255, 255, 0.4),
-    9px 9px 5px rgba(0, 0, 0, 0.3); 
+    animation: blinkShadow 2s infinite ease-in-out;
 }
 .save-the-date {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.5rem;
     font-weight: normal;
-    color: white;
+    color: rgb(4, 4, 4);
     text-align: center;
+
     font-family: "Dancing Script", serif;
+    font-size: 2rem;
     
 }
 .text-section {
     background-color: white;
+    margin: 50px 0 50px 0;
     padding: 50px;
     display: flex;
-    flex-direction: column;
-    font-family: "Beau Rivage", serif;
-    font-size: 2rem;
-}
-.dresscode-section {
-    background-color: black;
-    color:white;
-    padding: 50px;
-    display: flex;
-    border-radius: 0 200px 0 200px;
     flex-direction: column;
     font-family: "Beau Rivage", serif;
     font-size: 2rem;
 }
 .timing-section {
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     padding: 50px;
     display: flex;
     flex-direction: column;
@@ -91,23 +115,26 @@ body {
     font-family: "Beau Rivage", serif;
     font-size: 50px;
     align-self: center;
+    color: white;
 }
 .timing-section p{
     font-family: "Beau Rivage", serif;
     font-size: 30px;
+    color: white;
 }
 .image-section-small {
     background: url('https://github.com/KarimSaliev/aktanaielen/blob/main/static/unnamed-4.jpg?raw=true');
-    height: 50vh;
-    margin: 50px 15px 50px 15px;
+    height: 80vh;
+    margin: 50px 0 50px 0;
     background-size: cover;
     background-position: center top;/* Ensures the image covers the entire area */
     background-repeat: no-repeat;
-    border-radius: 80px;
 }
 .location-section {
-    background: url('https://github.com/KarimSaliev/aktanaielen/blob/main/static/450084568_1195180185234916_756033831966295947_n.jpg?raw=true') no-repeat center center/cover;
+    background: url('https://github.com/KarimSaliev/aktanaielen/blob/main/static/450084568_1195180185234916_756033831966295947_n.jpg?raw=true') 
+        no-repeat center center/cover;
     padding: 50px;
+    margin: 0 0 50px 0;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -118,13 +145,19 @@ body {
     font-size: 1.4rem;
     font-weight: 400;
     font-style: normal;
-    border-radius: 200px 0 200px 0;
-    text-shadow: 
-        0px 0px 10px rgba(0, 0, 0, 0.9),  /* Strong black glow */
-        2px 2px 10px rgba(0, 0, 0, 0.7),  /* Deeper shadow */
-        -2px -2px 10px rgba(0, 0, 0, 0.6), /* Outer contrast */
-        4px 4px 15px rgba(0, 0, 0, 0.5); /* Softened depth */
-    backdrop-filter: brightness(80%) contrast(120%);
+    position: relative;
+}
+
+.location-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: grayscale(100%) brightness(50%);
+    z-index: -1;
 }
 .location-button {
     display: inline-block;
@@ -137,11 +170,13 @@ body {
     margin-top: 20px;
     
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
     .slideshow-container {
         height: 80vh; /* Reduce the height of the slideshow */
     }
-
+    .main-container {
+        height: 60vh;
+    }
     .slide {
         height: 80vh; /* Adjust the height to fit within a smaller screen */
     }
@@ -175,11 +210,13 @@ body {
         font-size: 1.7rem;
     }
 }
-@media screen and (max-width: 455px) {
+@media screen and (max-width: 550px) {
     .slideshow-container {
         height: 60vh; /* Reduce the height of the slideshow */
     }
-
+    .main-container {
+        height: 50vh;
+    }
     .slide {
         height: 60vh; /* Adjust the height to fit within a smaller screen */
     }
@@ -213,7 +250,7 @@ body {
         font-size: 1.5rem;
     }
 }
-@media screen and (max-width: 421px) {
+@media screen and (max-width: 500px) {
     .slideshow-container {
         height: 50vh; /* Reduce the height of the slideshow */
     }
@@ -236,7 +273,6 @@ body {
     .location-section {
         height: 30vh;
         font-size: 1rem;
-        border-radius: 150px 0 150px 0;
     }
     .timing-section {
         height: 40vh;
@@ -253,10 +289,9 @@ body {
     .dresscode-section {
         height: 30vh;
         font-size: 1.3rem;
-        border-radius: 0 150px 0 150px;
     }
 }
-@media screen and (max-width: 385px) {
+@media screen and (max-width: 400px) {
     .slideshow-container {
         height: 40vh; /* Reduce the height of the slideshow */
     }
@@ -279,7 +314,6 @@ body {
     .location-section {
         height: 25vh;
         font-size: 0.9rem;
-        border-radius: 120px 0 120px 0;
     }
     .timing-section {
         height: 35vh;
@@ -290,12 +324,10 @@ body {
     .timing-section h2 {
         font-size: 2.5rem;
     }
-
-    .dresscode-section {
-        height: 30vh;
-        font-size: 1.2rem;
-        border-radius: 0 150px 0 150px;
+    .location-button {
+        font-size: 0.8rem;
     }
+
 }
 @media screen and (max-width: 340px) {
     .slideshow-container {
@@ -313,17 +345,20 @@ body {
     .save-the-date {
         font-size: 1rem;/* Adjust font size for small screens */
     }
+    .location-button {
+        font-size: 0.7rem;
+    }
     .text-section {
     font-size: 1rem;
     height: 24vh;
 }
+
 .image-section-small {
     height: 30vh;
 }
     .location-section {
         height: 20vh;
         font-size: 0.8rem;
-        border-radius: 100px 0 100px 0;
     }
     .timing-section {
         height: 30vh;
@@ -338,7 +373,6 @@ body {
     .dresscode-section {
         height: 20vh;
         font-size: 1rem;
-        border-radius: 0 100px 0 100px;
     }
 }
 @media screen and (max-width: 421px) {
