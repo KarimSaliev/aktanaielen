@@ -125,7 +125,7 @@ html {
 .image-section-small {
     background: url('https://github.com/KarimSaliev/aktanaielen/blob/main/static/unnamed-4.jpg?raw=true');
     height: 80vh;
-    margin: 50px 0 50px 0;
+    margin: 20px 0 20px 0;
     background-size: cover;
     background-position: center top;/* Ensures the image covers the entire area */
     background-repeat: no-repeat;
@@ -134,7 +134,7 @@ html {
     background: url('https://github.com/KarimSaliev/aktanaielen/blob/main/static/450084568_1195180185234916_756033831966295947_n.jpg?raw=true') 
         no-repeat center center/cover;
     padding: 50px;
-    margin: 0 0 50px 0;
+    margin: 0 0 20px 0;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -262,7 +262,9 @@ html {
     .image-text {
         font-size: 2.5rem; /* Decrease the font size for smaller screens */
     }
-
+    .image-section-small {
+        margin: 10px 0 10px 0;
+    }
     .save-the-date {
         font-size: 1.1rem;/* Adjust font size for small screens */
     }
@@ -273,6 +275,7 @@ html {
     .location-section {
         height: 30vh;
         font-size: 1rem;
+        margin: 0 0 10px 0;
     }
     .timing-section {
         height: 40vh;
@@ -355,10 +358,12 @@ html {
 
 .image-section-small {
     height: 30vh;
+    margin: 5px 0 5px 0;
 }
     .location-section {
         height: 20vh;
         font-size: 0.8rem;
+        margin: 0 0 5px 0;
     }
     .timing-section {
         height: 30vh;
