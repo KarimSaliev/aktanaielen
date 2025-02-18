@@ -5,21 +5,25 @@ body {
     padding: 20px;
     overflow-x: hidden;
 }
+
 .section {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    min-height: 80vh; /* Changed from height to min-height */
     text-align: center;
     position: relative;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 2s ease-out, transform 2s ease-out;
+    overflow: auto; /* Prevents content from being cut */
 }
+
 .section.visible {
     opacity: 1;
     transform: translateY(0);
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -27,21 +31,23 @@ html {
 .main-container {
     position: relative;
     width: 100%;
-    height: 70vh;
+    min-height: 70vh; /* Changed from height to min-height */
     overflow: hidden;
 }
+
 .slideshow-container {
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh; /* Prevent collapsing */
     overflow: hidden;
 }
+
 .slide {
     position: absolute;
     width: 100%;
-    height: 100vh;
-    background-size: cover; /* Ensures the image covers the entire area */
-    background-position: center; /* Centers the image within the slide */
+    min-height: 100vh; /* Ensures content does not get cut */
+    background-size: cover;
+    background-position: center top;
     background-repeat: no-repeat;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
@@ -50,8 +56,10 @@ html {
 .active {
     opacity: 1;
 }
+
+/* Blinking Shadow Animation */
 @keyframes blinkShadow {
-    0% {
+    0%, 100% {
         text-shadow: 
         0px 0px 20px rgba(128, 128, 128, 0.8),
         0px 0px 40px rgba(128, 128, 128, 0.6), 
@@ -65,14 +73,8 @@ html {
         0px 0px 50px rgba(128, 128, 128, 0.2),
         5px 5px 3px rgba(105, 103, 103, 0.2);
     }
-    100% {
-        text-shadow: 
-        0px 0px 20px rgba(128, 128, 128, 0.8),
-        0px 0px 40px rgba(128, 128, 128, 0.6), 
-        0px 0px 60px rgba(128, 128, 128, 0.4),
-        9px 9px 5px rgba(99, 97, 97, 0.3);
-    }
 }
+
 .image-text {
     position: absolute;
     top: 50%;
@@ -85,51 +87,59 @@ html {
     font-family: "Beau Rivage", serif;
     color: black;
     animation: blinkShadow 2s infinite ease-in-out;
+    white-space: normal; /* Prevents text overflow issues */
 }
+
 .save-the-date {
     font-weight: normal;
     color: rgb(4, 4, 4);
     text-align: center;
-
     font-family: "Dancing Script", serif;
     font-size: 2rem;
-    
 }
+
 .text-section {
     background-color: white;
-    margin: 50px 0 50px 0;
+    margin: 50px 0;
     padding: 50px;
     display: flex;
     flex-direction: column;
     font-family: "Beau Rivage", serif;
     font-size: 2rem;
+    min-height: auto; /* Prevents height restriction */
 }
+
 .timing-section {
     background-color: rgb(0, 0, 0);
     padding: 50px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    min-height: 60vh; /* Changed from height to min-height */
 }
-.timing-section h2{
+
+.timing-section h2 {
     font-family: "Beau Rivage", serif;
     font-size: 50px;
     align-self: center;
     color: white;
 }
-.timing-section p{
+
+.timing-section p {
     font-family: "Beau Rivage", serif;
-    font-size: 30px;
+    font-size: 20px;
     color: white;
 }
+
 .image-section-small {
     background: url('https://github.com/KarimSaliev/aktanaielen/blob/main/static/unnamed-4.jpg?raw=true');
-    height: 80vh;
-    margin: 20px 0 20px 0;
+    min-height: 80vh;
+    margin: 20px 0;
     background-size: cover;
-    background-position: center top;/* Ensures the image covers the entire area */
+    background-position: center top;
     background-repeat: no-repeat;
 }
+
 .location-section {
     background: url('https://github.com/KarimSaliev/aktanaielen/blob/main/static/450084568_1195180185234916_756033831966295947_n.jpg?raw=true') 
         no-repeat center center/cover;
@@ -146,6 +156,7 @@ html {
     font-weight: 400;
     font-style: normal;
     position: relative;
+    min-height: auto;
 }
 
 .location-section::before {
@@ -159,6 +170,7 @@ html {
     filter: grayscale(100%) brightness(50%);
     z-index: -1;
 }
+
 .location-button {
     display: inline-block;
     padding: 10px 20px;
@@ -168,224 +180,143 @@ html {
     font-size: 1.2rem;
     border-radius: 12px;
     margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .section {
+        min-height: 100vh;
+        padding: 20px;
+    }
     
-}
-@media screen and (max-width: 650px) {
-    .slideshow-container {
-        height: 80vh; /* Reduce the height of the slideshow */
-    }
-    .main-container {
-        height: 60vh;
-    }
-    .slide {
-        height: 80vh; /* Adjust the height to fit within a smaller screen */
-    }
-
     .image-text {
-        font-size: 4rem; /* Decrease the font size for smaller screens */
+        font-size: 4rem;
     }
 
-    .save-the-date {
-        font-size: 1.3rem;/* Adjust font size for small screens */
-    }
     .text-section {
-    font-size: 1.7rem;
-    height: 50vh;
-}
-.text-section h2 {
-        font-size: 3.2rem;
-    }
-    .location-section {
-        height: 50vh;
-        font-size: 1.2rem;
-    }
-    .timing-section {
-        height: 60vh;
-    }
-    .timing-section p {
         font-size: 1.5rem;
-    }
-    .dresscode-section {
-        height: 50vh;
-        font-size: 1.7rem;
-    }
-}
-@media screen and (max-width: 550px) {
-    .slideshow-container {
-        height: 60vh; /* Reduce the height of the slideshow */
-    }
-    .main-container {
-        height: 50vh;
-    }
-    .slide {
-        height: 60vh; /* Adjust the height to fit within a smaller screen */
+        min-height: auto;
+        padding: 40px;
     }
 
-    .image-text {
-        font-size: 3rem; /* Decrease the font size for smaller screens */
-    }
-
-    .save-the-date {
-        font-size: 1.2rem;/* Adjust font size for small screens */
-    }
-    .text-section {
-    font-size: 1.5rem;
-    height: 40vh;
-}
-    .location-section {
-        height: 40vh;
-        font-size: 1.1rem;
-    }
     .timing-section {
-        height: 50vh;
-    }
-    .timing-section p {
-        font-size: 1.3rem;
-    }
-    .timing-section h2 {
-        font-size: 3.5rem;
-    }
-    .dresscode-section {
-        height: 40vh;
-        font-size: 1.5rem;
-    }
-}
-@media screen and (max-width: 500px) {
-    .slideshow-container {
-        height: 50vh; /* Reduce the height of the slideshow */
+        min-height: 70vh;
+        padding: 30px;
     }
 
-    .slide {
-        height: 50vh; /* Adjust the height to fit within a smaller screen */
-    }
-
-    .image-text {
-        font-size: 2.5rem; /* Decrease the font size for smaller screens */
-    }
-    .image-section-small {
-        margin: 10px 0 10px 0;
-    }
-    .save-the-date {
-        font-size: 1.1rem;/* Adjust font size for small screens */
-    }
-    .text-section {
-    font-size: 1.2rem;
-    height: 30vh;
-}
-    .location-section {
-        height: 30vh;
-        font-size: 1rem;
-        margin: 0 0 10px 0;
-    }
-    .timing-section {
-        height: 40vh;
-    }
-    .timing-section p {
-        font-size: 1rem;
-    }
     .timing-section h2 {
         font-size: 3rem;
     }
-    .image-section-small {
-        height: 40vh;
+}
+
+@media screen and (max-height: 600px) {
+    .section {
+        min-height: 100vh;
     }
-    .dresscode-section {
-        height: 30vh;
+
+    .text-section {
+        min-height: auto;
+        padding: 30px;
+    }
+
+    .timing-section {
+        min-height: 80vh;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 760px){
+    .slideshow-container {
+        min-height: 80vh;
+
+    }
+    .slide {
+        min-height: 80vh;
+    }
+}
+@media screen and (max-width: 600px){
+    .slideshow-container {
+        min-height: 60vh;
+
+    }
+    .slide {
+        min-height: 60vh;
+    }
+}
+@media screen and (max-width: 520px){
+    .slideshow-container {
+        min-height: 45vh;
+
+    }
+    .slide {
+        min-height: 45vh;
+    }
+}
+@media screen and (max-width: 420px){
+    .slideshow-container {
+        min-height: 40vh;
+
+    }
+    .slide {
+        min-height: 40vh;
+    }
+    .text-section p {
+        font-size: 1.2rem;
+    }
+    .location-section p {
+        font-size: 1.2rem;
+    }
+    .image-text {
+        font-size: 3rem;
+    }
+    .save-the-date {
+        font-size: 2rem;
+    }
+}
+@media screen and (max-width: 370px){
+    .text-section p {
+        font-size: 1rem;
+    }
+    .location-section p {
+        font-size: 1rem;
+    }
+    .image-text {
+        font-size: 2.7rem;
+    }
+    .save-the-date {
+        font-size: 1.8rem;
+    }
+}
+@media screen and (max-width: 350px){
+    .text-section p {
+        font-size: 0.8rem;
+    }
+    .location-section p {
+        font-size: 0.8rem;
+    }
+    .image-text {
+        font-size: 2.3rem;
+    }
+    .save-the-date {
         font-size: 1.3rem;
     }
 }
-@media screen and (max-width: 400px) {
-    .slideshow-container {
-        height: 40vh; /* Reduce the height of the slideshow */
-    }
-
-    .slide {
-        height: 40vh; /* Adjust the height to fit within a smaller screen */
-    }
-
-    .image-text {
-        font-size: 2.3rem; /* Decrease the font size for smaller screens */
-    }
-
-    .save-the-date {
-        font-size: 1rem;/* Adjust font size for small screens */
-    }
-    .text-section {
-    font-size: 1.1rem;
-    height: 30vh;
-}
-    .location-section {
-        height: 25vh;
-        font-size: 0.9rem;
-    }
-    .timing-section {
-        height: 35vh;
-    }
-    .timing-section p {
-        font-size: 0.9rem;
-    }
-    .timing-section h2 {
-        font-size: 2.5rem;
-    }
-    .location-button {
-        font-size: 0.8rem;
-    }
-
-}
-@media screen and (max-width: 340px) {
-    .slideshow-container {
-        height: 35vh; /* Reduce the height of the slideshow */
-    }
-
-    .slide {
-        height: 35vh; /* Adjust the height to fit within a smaller screen */
-    }
-
-    .image-text {
-        font-size: 2rem; /* Decrease the font size for smaller screens */
-    }
-
-    .save-the-date {
-        font-size: 1rem;/* Adjust font size for small screens */
-    }
-    .location-button {
+@media screen and (max-width: 300px){
+    .text-section p {
         font-size: 0.7rem;
     }
-    .text-section {
-    font-size: 1rem;
-    height: 24vh;
-}
-
-.image-section-small {
-    height: 30vh;
-    margin: 5px 0 5px 0;
-}
-    .location-section {
-        height: 20vh;
-        font-size: 0.8rem;
-        margin: 0 0 5px 0;
-    }
-    .timing-section {
-        height: 30vh;
-    }
-    .timing-section p {
+    .location-section p {
         font-size: 0.7rem;
     }
-    .timing-section h2 {
-        font-size: 2.5rem;
+    .image-text {
+        font-size: 2rem;
     }
-
-    .dresscode-section {
-        height: 20vh;
+    .save-the-date {
         font-size: 1rem;
     }
-}
-@media screen and (max-width: 421px) {
-    .text-section {
-        height: 14vh;
-        font-size: 0.75rem;
+    .location-button {
+        font-size: 1rem;
     }
-    .text-section h2 {
-        font-size: 2rem;
+    .timing-section p {
+        font-size:  0.7rem;
     }
 }
