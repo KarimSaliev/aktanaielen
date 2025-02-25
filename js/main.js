@@ -231,7 +231,7 @@
 
 }());
 document.addEventListener("DOMContentLoaded", function () {
-    var audio = new Audio("audio/Mr Lambo - Iceberg (Official Audio).mp3"); // Change to your file
+    var audio = new Audio("https://github.com/KarimSaliev/aktanaielen/blob/main/audio/Mr%20Lambo%20-%20Iceberg%20(Official%20Audio).mp3"); // Change to your file
     audio.muted = true; // Start muted
     audio.play().then(() => {
         audio.muted = false; // Unmute after it starts playing
