@@ -230,34 +230,16 @@
 
 
 }());
-document.addEventListener("DOMContentLoaded", function () {
-    let audioContext;
-    let audioElement = new Audio("audio/Mr Lambo - Iceberg (Official Audio).mp3");
-    let track;
+const audio = new Audio('audio/Mr Lambo - Iceberg (Official Audio).mp3');
 
-    function initAudio() {
-        if (!audioContext) {
-            audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            track = audioContext.createMediaElementSource(audioElement);
-            track.connect(audioContext.destination);
-        }
-
-        if (audioContext.state === "suspended") {
-            audioContext.resume();
-        }
-
-        audioElement.loop = true;
-        audioElement.play().then(() => {
-            console.log("Playback started.");
-        }).catch((error) => {
-            console.log("Playback error:", error);
-        });
+// Capture a click event on the document (or a specific element)
+document.addEventListener('click', function() {
+    // Check if the audio is currently playing
+    if (audio.paused) {
+        // If audio is paused, play it
+        audio.play();
+    } else {
+        // If audio is playing, pause it
+        audio.pause();
     }
-
-    document.addEventListener("wheel", function playOnInteraction() {
-        initAudio();
-        document.removeEventListener("click", playOnInteraction);
-    });
-
-    console.log("Click anywhere to start audio.");
 });
