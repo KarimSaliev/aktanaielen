@@ -230,16 +230,15 @@
 
 
 }());
+
 const audio = new Audio('audio/Mr Lambo - Iceberg (Official Audio).mp3');
-
-document.addEventListener('click', function(event) {
-    // Check if the clicked element is an <a> tag or other elements you want to exclude
-	console.log(event)
-    if (event.target.innerHTML ==="2GIS") {
-        return; // If it's an <a> tag, do nothing and exit the function
-    }
-
-    // Check if the audio is currently playing
+document.getElementById("coverpage").addEventListener("click", function () {
+	this.classList.add("turn");
+  
+	setTimeout(() => {
+	  document.getElementById("fh5co-header").scrollIntoView({ behavior: "smooth", block: "start" });
+	}, 0); // Increased to 1s for a more fluid experience
+	// Check if the audio is currently playing
     if (audio.paused) {
         // If audio is paused, play it
         audio.play();
@@ -247,4 +246,4 @@ document.addEventListener('click', function(event) {
         // If audio is playing, pause it
         audio.pause();
     }
-});
+  });

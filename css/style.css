@@ -158,7 +158,59 @@ h1, h2, h3, h4, h5, h6, figure {
     transform: scale(1);
   }
 }
+@keyframes shiftLeftRight {
+  0% {
+    transform: translateX(0); /* Initial position */
+  }
+  25% {
+    transform: translateX(-5%); /* Shift left */
+  }
+  50% {
+    transform: translateX(0); /* Back to the original position */
+  }
+  75% {
+    transform: translateX(5%); /* Shift right */
+  }
+  100% {
+    transform: translateX(0); /* Back to the original position */
+  }
+}
+.coverpage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url("/images/IMG_2904.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%; /* Stretch the background to fully fill the element */
+  background-position: center center; 
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  transform-origin: left;
+  transition: transform 2.2s ease-in-out, opacity 2.2s ease-in-out;
+  z-index: 9000;
+  padding-top: 100px;
+}
 
+.turn {
+  transform: rotateY(-100deg);
+  opacity: 0;
+}
+.content {
+  position: relative;
+  z-index: 1;
+  display: none;
+  padding: 20px;
+}
+.content.visible {
+  opacity: 0;
+}
 .pulsating-text {
   cursor: pointer;
   animation: pulsate 1.5s infinite;
