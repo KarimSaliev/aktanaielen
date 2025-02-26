@@ -232,8 +232,13 @@
 }());
 const audio = new Audio('audio/Mr Lambo - Iceberg (Official Audio).mp3');
 
-// Capture a click event on the document (or a specific element)
-document.addEventListener('click', function() {
+document.addEventListener('click', function(event) {
+    // Check if the clicked element is an <a> tag or other elements you want to exclude
+	console.log(event)
+    if (event.target.innerHTML ==="2GIS") {
+        return; // If it's an <a> tag, do nothing and exit the function
+    }
+
     // Check if the audio is currently playing
     if (audio.paused) {
         // If audio is paused, play it
