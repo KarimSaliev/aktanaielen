@@ -231,30 +231,33 @@
 
 }());
 document.addEventListener("DOMContentLoaded", function () {
-    var audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    var audioElement = new Audio("audio/Mr Lambo - Iceberg (Official Audio).mp3"); // Use a direct MP3 URL
-    var track = audioContext.createMediaElementSource(audioElement);
-    track.connect(audioContext.destination);
+    let audioContext;
+    let audioElement = new Audio("audio/Mr Lambo - Iceberg (Official Audio).mp3");
+    let track;
 
-    audioElement.loop = true; // Ensure continuous playback
-    audioElement.muted = true; // Start muted to allow autoplay
-    audioElement.play().then(() => {
-        console.log("Autoplay started successfully.");
-        setTimeout(() => {
-            audioElement.muted = false; // Unmute after a delay
-        }, 2000); // Delay for browsers to allow unmuting
-    }).catch((error) => {
-        console.log("Autoplay blocked:", error);
-    });
-
-    // Attempt to resume audio context after user interaction if blocked
-    document.addEventListener("click", function playOnInteraction() {
-        if (audioContext.state === "suspended") {
-            audioContext.resume().then(() => {
-                console.log("Audio context resumed.");
-                audioElement.play();
-            });
+    function initAudio() {
+        if (!audioContext) {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            track = audioContext.createMediaElementSource(audioElement);
+            track.connect(audioContext.destination);
         }
+
+        if (audioContext.state === "suspended") {
+            audioContext.resume();
+        }
+
+        audioElement.loop = true;
+        audioElement.play().then(() => {
+            console.log("Playback started.");
+        }).catch((error) => {
+            console.log("Playback error:", error);
+        });
+    }
+
+    document.addEventListener("wheel", function playOnInteraction() {
+        initAudio();
         document.removeEventListener("click", playOnInteraction);
     });
+
+    console.log("Click anywhere to start audio.");
 });
