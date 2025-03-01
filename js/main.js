@@ -249,4 +249,5 @@ document.getElementById("openButton").addEventListener("click", function () {
         audio.pause();
     }
 	}, 1000);
+	document.getElementById("fh5co-header").scrollIntoView({ behavior: "smooth" });
 });
