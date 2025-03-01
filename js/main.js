@@ -237,6 +237,7 @@ const audio = new Audio('audio/Mr Lambo - Iceberg (Official Audio).mp3');
 
 document.getElementById("openButton").addEventListener("click", function () {
 	document.getElementById("coverpage").classList.add("open");
+	document.getElementById("main").classList.add("visible");
 	setTimeout(() => {
 		if (audio.paused) {
         // If audio is paused, play it
