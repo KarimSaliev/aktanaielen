@@ -21,7 +21,7 @@ body {
 
 span, p{
   font-size: 3rem;
-  font-family: "Baskervville", serif;
+  font-family: "PT Sans", sans-serif;
 }
 
 #page {
@@ -205,7 +205,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .coverpage span {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 1.5rem;
+  font-size: 2.2rem;
 }
 .coverpage i {
   font-size: 3rem;
