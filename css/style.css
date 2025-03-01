@@ -175,6 +175,9 @@ h1, h2, h3, h4, h5, h6, figure {
     transform: translateX(0); /* Back to the original position */
   }
 }
+[id*="fh5co"] {
+  opacity:0;
+}
 .coverpage {
   position: fixed;
   top: 0;
@@ -182,6 +185,7 @@ h1, h2, h3, h4, h5, h6, figure {
   width: 100vw;
   height: 100vh;
   background: #222;
+  flex-direction: column;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -189,10 +193,17 @@ h1, h2, h3, h4, h5, h6, figure {
   transform-origin: left;
   z-index: 2000;
 }
-
 .coverpage.open {
   transform: translateX(-100%);
   opacity: 0;
+}
+.coverpage span {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+.coverpage i {
+  font-size: 3rem;
 }
 
 .circle {
